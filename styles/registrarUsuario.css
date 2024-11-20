@@ -1,0 +1,142 @@
+/* styles.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('../images/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.registration-container {
+    background-color: #ffffff;
+    padding: 20px; /* Reducir padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 380px; /* Ajustar ancho */
+    text-align: center;
+}
+
+.logo {
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto 15px auto;
+}
+
+/* Ajustar márgenes entre grupos */
+.input-group {
+    margin-bottom: 10px;
+}
+
+/* Ajustar tamaño de las entradas */
+input, select {
+    padding: 8px; /* Reducir el padding */
+    font-size: 14px; /* Reducir el tamaño de fuente */
+}
+
+.logo {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #4A4A4A;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #4A4A4A;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.identity-fields {
+    margin-top: 15px;
+}
+
+.avatar-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #7f8c8d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #95a5a6;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.avatar-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos imágenes por fila */
+    gap: 15px;
+    justify-items: center; /* Centrar imágenes horizontalmente */
+    margin-top: 15px;
+}
+
+.avatar-option {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-option input {
+    display: none; /* Ocultar los botones de radio */
+}
+
+.avatar-option img {
+    width: 80px; /* Reducido el tamaño de las imágenes */
+    height: 80px; /* Reducido el tamaño de las imágenes */
+    border-radius: 10px;
+    object-fit: cover; /* Asegurar que la imagen se ajuste sin deformarse */
+    transition: transform 0.3s ease;
+}
+
+.avatar-option:hover img {
+    transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-option input:checked + img {
+    border: 3px solid #4CAF50; /* Resaltar el avatar seleccionado */
+    transform: scale(1.1);
+}

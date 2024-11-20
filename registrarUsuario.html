@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Psicología Contigo</title>
+    <link rel="stylesheet" href="styles/registrarUsuario.css">
+</head>
+<body>
+    <div class="registration-container" id="step2">
+        <img src="images/logoPc.png" alt="Psicología Contigo Logo" class="logo">
+        <h2>Elige cómo deseas registrarte</h2>
+        <form id="identityForm">
+            <div class="input-group">
+                <label for="identityChoice">Selecciona una opción:</label>
+                <select id="identityChoice" name="identityChoice" required>
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="real">Identidad Real</option>
+                    <option value="avatar">Avatar</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    
+    <div class="registration-container" id="realIdentityFields" style="display: none;">
+        <h2>Registro con Identidad Real</h2>
+        <form id="realForm">
+            <div class="input-group">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre completo">
+            </div>
+            <div class="input-group">
+                <label for="documento">Documento:</label>
+                <input type="text" id="documento" name="documento" placeholder="Ingrese su documento de identidad">
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Ingrese su email">
+            </div>
+            <div class="input-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono">
+            </div>
+            <div class="input-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+            </div>
+            <div class="input-group">
+                <label for="contraseñaReal">Contraseña:</label>
+                <input type="password" id="contraseñaReal" name="contraseñaReal" placeholder="Cree su contraseña">
+            </div>
+            <button type="submit">Finalizar Registro</button>
+        </form>
+    </div>
+    
+    <div class="registration-container" id="avatarFields" style="display: none;">
+        <h2>Registro con Avatar</h2>
+        <form id="avatarForm">
+            <label>Selecciona un avatar:</label>
+            <div class="avatar-options">
+                <label for="avatar1" class="avatar-option">
+                    <input type="radio" id="avatar1" name="avatar" value="avatar1">
+                    <img src="images/avatar1.png" alt="Avatar 1" class="avatar-image">
+                </label>
+                <label for="avatar2" class="avatar-option">
+                    <input type="radio" id="avatar2" name="avatar" value="avatar2">
+                    <img src="images/avatar2.png" alt="Avatar 2" class="avatar-image">
+                </label>
+                <label for="avatar3" class="avatar-option">
+                    <input type="radio" id="avatar3" name="avatar" value="avatar3">
+                    <img src="images/avatar3.png" alt="Avatar 3" class="avatar-image">
+                </label>
+                <label for="avatar4" class="avatar-option">
+                    <input type="radio" id="avatar4" name="avatar" value="avatar4">
+                    <img src="images/avatar4.png" alt="Avatar 4" class="avatar-image">
+                </label>
+            </div>
+            <div class="input-group">
+                <label for="contraseñaAvatar">Contraseña:</label>
+                <input type="password" id="contraseñaAvatar" name="contraseñaAvatar" placeholder="Cree su contraseña">
+            </div>
+            <button type="submit">Finalizar Registro</button>
+        </form>
+    </div>
+    
+    <script>
+        // Mantener el código existente para mostrar/ocultar formularios
+        const step2 = document.getElementById('step2');
+        const realIdentityFields = document.getElementById('realIdentityFields');
+        const avatarFields = document.getElementById('avatarFields');
+        const identityChoice = document.getElementById('identityChoice');
+        
+        identityChoice.addEventListener('change', () => {
+            step2.style.display = 'none';
+            if (identityChoice.value === 'real') {
+                realIdentityFields.style.display = 'block';
+            } else if (identityChoice.value === 'avatar') {
+                avatarFields.style.display = 'block';
+            }
+        });
+        
+        // Manejador de formulario de identidad real actualizado
+        document.getElementById('realForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            console.log('Iniciando envío de formulario real');
+            
+            const formData = {
+                tipoRegistro: 'real',
+                nombre: document.getElementById('nombre').value,
+                documento: document.getElementById('documento').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                fechaNacimiento: document.getElementById('fechaNacimiento').value,
+                contraseñaReal: document.getElementById('contraseñaReal').value
+            };
+            
+            console.log('Datos a enviar:', formData);
+            
+            try {
+                console.log('Intentando enviar datos al servidor...');
+                const response = await fetch('registrar.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('Respuesta del servidor:', response);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log('Resultado:', result);
+                
+                if (result.success) {
+                    alert('Registro exitoso');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Error del servidor: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error detallado:', error);
+                alert('Error al procesar el registro: ' + error.message);
+            }
+        });
+        
+        // Manejador de formulario de avatar actualizado
+        document.getElementById('avatarForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            console.log('Iniciando envío de formulario avatar');
+            
+            const avatarSeleccionado = document.querySelector('input[name="avatar"]:checked');
+            
+            if (!avatarSeleccionado) {
+                alert('Por favor selecciona un avatar');
+                return;
+            }
+            
+            const formData = {
+                tipoRegistro: 'avatar',
+                avatar: avatarSeleccionado.value,
+                contraseñaAvatar: document.getElementById('contraseñaAvatar').value
+            };
+            
+            console.log('Datos a enviar:', formData);
+            
+            try {
+                console.log('Intentando enviar datos al servidor...');
+                const response = await fetch('registrar.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('Respuesta del servidor:', response);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log('Resultado:', result);
+                
+                if (result.success) {
+                    alert('Registro exitoso');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Error del servidor: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error detallado:', error);
+                alert('Error al procesar el registro: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

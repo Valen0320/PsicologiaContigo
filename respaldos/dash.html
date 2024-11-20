@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+
+    <!-- Sidebar (Menú de navegación) -->
+    <div class="sidebar">
+        <h3>Panel de Control</h3>
+        <ul>
+            <li>
+                <button class="toggle-module" data-target="module1">Gestión de usuarios.</button>
+                <ul id="module1" class="module">
+                    <li><button class="submodule-btn">Modificar información del usuario.</button></li>
+                    <li><button class="submodule-btn">Inhabilitar usuario.</button></li>
+                </ul>
+            </li>
+            <li>
+                <button class="toggle-module" data-target="module2">Gestión de citas.</button>
+                <ul id="module2" class="module">
+                    <li><button class="submodule-btn">Agendar cita.</button></li>
+                    <li><button class="submodule-btn">Cancelar cita.</button></li>
+                    <li><button class="submodule-btn">Modificar cita.</button></li>
+                </ul>
+            </li>
+            <li>
+                <button class="toggle-module" data-target="module3">Gestión de reportes.</button>
+                <ul id="module3" class="module">
+                    <li><button class="submodule-btn">Generar reporte de pacientes registrados.</button></li>
+                    <li><button class="submodule-btn">Generar reporte de citas agendadas.</button></li>
+                    <li><button class="submodule-btn">Generar reporte de terapias realizadas.</button></li>
+                </ul>
+            </li>
+            <li>
+                <button class="toggle-module" data-target="module4">Gestión de pruebas.</button>
+                <ul id="module4" class="module">
+                    <li><button class="submodule-btn">Realizar prueba de personalidad.</button></li>
+                    <li><button class="submodule-btn">Realizar prueba psicológica.</button></li>
+                </ul>
+            </li>
+            <li>
+                <button class="toggle-module" data-target="module5">Historial medico.</button>
+                <ul id="module5" class="module">
+                    <li><button class="submodule-btn">Consultar historial medico</button></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Módulos de contenido -->
+    <div class="module-content">
+        <div id="content-module1" class="module-content-box">
+            <h3>Contenido del Módulo 1</h3>
+            <p>Detalles de lo que ofrece el Módulo 1...</p>
+        </div>
+
+        <div id="content-module2" class="module-content-box">
+            <h3>Contenido del Módulo 2</h3>
+            <p>Detalles de lo que ofrece el Módulo 2...</p>
+        </div>
+
+        <div id="content-module3" class="module-content-box">
+            <h3>Contenido del Módulo 3</h3>
+            <p>Detalles de lo que ofrece el Módulo 3...</p>
+        </div>
+
+        <div id="content-module4" class="module-content-box">
+            <h3>Contenido del Módulo 4</h3>
+            <p>Detalles de lo que ofrece el Módulo 4...</p>
+        </div>
+
+        <div id="content-module5" class="module-content-box">
+            <h3>Contenido del Módulo 5</h3>
+            <p>Detalles de lo que ofrece el Módulo 5...</p>
+        </div>
+
+        <!-- Área donde se coloca la imagen -->
+        <div class="image-area">
+            <img src="images/fondo.jpg" alt="Fondo" class="module-image">
+        </div>
+    </div>
+
+    <!-- Script para manejar la funcionalidad de mostrar/ocultar submódulos -->
+    <script>
+        // Función para alternar la visibilidad de los submódulos
+        document.querySelectorAll('.toggle-module').forEach(button => {
+            button.addEventListener('click', function() {
+                const target = document.getElementById(this.getAttribute('data-target'));
+                target.style.display = (target.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+
+        // Función para mostrar contenido del módulo principal
+        document.querySelectorAll('.submodule-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const contentId = "content-" + this.closest('ul').id;
+                document.querySelectorAll('.module-content-box').forEach(box => {
+                    box.style.display = 'none'; // Ocultar todo el contenido
+                });
+                document.getElementById(contentId).style.display = 'block'; // Mostrar el contenido correspondiente
+            });
+        });
+    </script>
+
+</body>
+</html>

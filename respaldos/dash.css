@@ -1,0 +1,176 @@
+/* Estilo general de la página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f4f7fc;
+    height: 100vh;
+}
+
+/* Sidebar - Menú de navegación */
+.sidebar {
+    width: 250px;
+    background-color: #4CAF50; /* Verde más suave */
+    color: white;
+    padding: 20px;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    height: 100%;
+}
+
+.sidebar h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+    background-color: #555;
+}
+
+/* Módulos - Área de contenido */
+.module {
+    display: none;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.submodule-btn {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.submodule-btn:hover {
+    background-color: #ddd;
+}
+
+.module-content {
+    margin-left: 270px; /* Espacio para el sidebar */
+    padding: 20px;
+    background-color: #fff;
+    width: calc(100% - 250px);
+    overflow-y: auto;
+}
+
+/* Estilo de cada bloque de contenido de los módulos */
+.module-content-box {
+    display: none;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.module-content-box h3 {
+    margin-top: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+}
+
+.module-content-box p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Animación y transición para los submódulos */
+.module ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.module-content-box p {
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* Transición en el sidebar y en la sección de contenido */
+.sidebar, .module-content {
+    transition: all 0.3s ease;
+}
+
+.submodule-btn {
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+/* Tiempos de transición suaves */
+.sidebar button, .submodule-btn {
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo de los botones del sidebar */
+.sidebar button {
+    margin-bottom: 10px;
+}
+
+.sidebar h3 {
+    color: white;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+/* Aseguramos que la parte derecha se alinee con la imagen */
+.module-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    height: 100vh; /* Esto asegura que la altura de la pantalla se cubra completamente */
+    overflow: hidden; /* Evita el scroll en el contenedor */
+}
+
+/* Estilo para la imagen */
+.image-area {
+    flex: 1; /* La imagen ocupará el espacio disponible */
+    margin-left: 20px; /* Espacio entre el panel y la imagen */
+    display: flex;
+    justify-content: center; /* Centra la imagen en el contenedor */
+    align-items: center; /* Centra la imagen verticalmente */
+    height: 100%; /* Asegura que ocupe toda la altura de la pantalla */
+}
+
+/* La imagen se ajustará al tamaño de la pantalla sin deformarse */
+.module-image {
+    max-width: 100%; /* La imagen ocupará todo el ancho disponible */
+    max-height: 100%; /* La imagen se ajustará para no exceder el alto disponible */
+    object-fit: cover; /* La imagen se ajusta al contenedor sin distorsionarse */
+    border-radius: 8px; /* Opcional: borde redondeado para un estilo más suave */
+}

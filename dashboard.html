@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+
+    <!-- Sidebar (Menú de navegación) -->
+    <div class="sidebar">
+        <h3>Panel de Control</h3>
+        <ul>
+            <li>
+                <button class="toggle-module" data-target="module1">Gestión de usuarios.</button>
+                <ul id="module1" class="module">
+                    <li><button class="submodule-btn" data-submodule="content-module1">Modificar información del usuario.</button></li>
+                    <li><button class="submodule-btn" data-submodule="content-module2">Inhabilitar usuario.</button></li>
+                </ul>
+            </li>
+            <li>
+                <button class="toggle-module" data-target="module2">Gestión de citas.</button>
+                <ul id="module2" class="module">
+                    <li><button class="submodule-btn" data-submodule="content-module3">Agendar cita.</button></li>
+                    <li><button class="submodule-btn" data-submodule="content-module4">Cancelar cita.</button></li>
+                    <li><button class="submodule-btn" data-submodule="content-module5">Modificar cita.</button></li>
+                </ul>
+            </li>
+            <li>
+                <button class="toggle-module" data-target="module3">Gestión de reportes.</button>
+                <ul id="module3" class="module">
+                    <li><button class="submodule-btn" data-submodule="content-module6">Generar reporte de pacientes registrados.</button></li>
+                    <li><button class="submodule-btn" data-submodule="content-module7">Generar reporte de citas agendadas.</button></li>
+                    <li><button class="submodule-btn" data-submodule="content-module8">Generar reporte de terapias realizadas.</button></li>
+                </ul>
+            </li>
+            <li>
+                <button class="toggle-module" data-target="module4">Gestión de pruebas.</button>
+                <ul id="module4" class="module">
+                    <li><button class="submodule-btn" data-submodule="content-module9">Realizar prueba de personalidad.</button></li>
+                    <li><button class="submodule-btn" data-submodule="content-module10">Realizar prueba psicológica.</button></li>
+                </ul>
+            </li>
+            <li>
+                <button class="toggle-module" data-target="module5">Historial medico.</button>
+                <ul id="module5" class="module">
+                    <li><button class="submodule-btn" data-submodule="content-module11">Consultar historial medico</button></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Módulos de contenido - Recuaod que se sobrepone sobre la imagen -->
+    <div class="module-content">
+        <!-- Recauadro de contenido en el centro de la pantalla -->
+        <div id="content-module1" class="module-content-box">
+            <h3>Contenido del Módulo 1</h3>
+            <p>Detalles de lo que ofrece el Módulo 1...</p>
+        </div>
+
+        <div id="content-module2" class="module-content-box">
+            <h3>Contenido del Módulo 2</h3>
+            <p>Detalles de lo que ofrece el Módulo 2...</p>
+        </div>
+
+        <div id="content-module3" class="module-content-box">
+            <h3>Contenido del Módulo 3</h3>
+            <p>Detalles de lo que ofrece el Módulo 3...</p>
+        </div>
+
+        <div id="content-module4" class="module-content-box">
+            <h3>Contenido del Módulo 4</h3>
+            <p>Detalles de lo que ofrece el Módulo 4...</p>
+        </div>
+
+        <div id="content-module5" class="module-content-box">
+            <h3>Contenido del Módulo 5</h3>
+            <p>Detalles de lo que ofrece el Módulo 5...</p>
+        </div>
+
+        <div id="content-module6" class="module-content-box">
+            <h3>Contenido del Módulo 6</h3>
+            <p>Detalles de lo que ofrece el Módulo 6...</p>
+        </div>
+
+        <div id="content-module7" class="module-content-box">
+            <h3>Contenido del Módulo 7</h3>
+            <p>Detalles de lo que ofrece el Módulo 7...</p>
+        </div>
+
+        <div id="content-module8" class="module-content-box">
+            <h3>Contenido del Módulo 8</h3>
+            <p>Detalles de lo que ofrece el Módulo 8...</p>
+        </div>
+
+        <div id="content-module9" class="module-content-box">
+            <h3>Contenido del Módulo 9</h3>
+            <p>Detalles de lo que ofrece el Módulo 9...</p>
+        </div>
+
+        <div id="content-module10" class="module-content-box">
+            <h3>Contenido del Módulo 10</h3>
+            <p>Detalles de lo que ofrece el Módulo 10...</p>
+        </div>
+
+        <div id="content-module11" class="module-content-box">
+            <h3>Contenido del Módulo 11</h3>
+            <p>Detalles de lo que ofrece el Módulo 11...</p>
+        </div>
+
+        <!-- Área donde se coloca la imagen -->
+        <div class="image-area">
+            <img src="images/fondo.jpg" alt="Fondo" class="module-image">
+        </div>
+    </div>
+
+    <script>
+        // Mostrar submódulos cuando se hace clic en un módulo
+        document.querySelectorAll('.toggle-module').forEach(button => {
+            button.addEventListener('click', function() {
+                const target = document.getElementById(this.getAttribute('data-target'));
+                target.style.display = (target.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+
+        // Función para alternar la visibilidad del contenido del submódulo
+        document.querySelectorAll('.submodule-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const contentId = this.getAttribute('data-submodule');
+                
+                // Ocultar todo el contenido
+                document.querySelectorAll('.module-content-box').forEach(box => {
+                    box.style.display = 'none';
+                });
+
+                // Mostrar el contenido del submódulo
+                const contentBox = document.getElementById(contentId);
+                contentBox.style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
