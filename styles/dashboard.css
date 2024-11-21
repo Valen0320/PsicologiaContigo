@@ -125,13 +125,14 @@ body {
     position: absolute; /* Para colocarlo sobre la imagen */
     top: 50%; /* Centrado vertical */
     left: 50%; /* Centrado horizontal */
-    transform: translate(-50%, -50%); /* Para asegurar que el recuadro se centre */
+    transform: translate(-40%, -50%); /* Para asegurar que el recuadro se centre */
     margin-bottom: 20px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con algo de transparencia */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 80%; /* Hace que el recuadro no sea demasiado grande */
+    width: 500px; /* Hace que el recuadro no sea demasiado grande */
+    height: 300px; /* Hace que el recuadro no sea demasiado grande */
     z-index: 10; /* Asegura que esté por encima de la imagen */
 }
 

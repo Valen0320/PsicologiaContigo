@@ -55,8 +55,60 @@
     <div class="module-content">
         <!-- Recauadro de contenido en el centro de la pantalla -->
         <div id="content-module1" class="module-content-box">
-            <h3>Contenido del Módulo 1</h3>
-            <p>Detalles de lo que ofrece el Módulo 1...</p>
+            <!-- <h1>Listado de Usuarios</h1>
+            <div id="mensaje">Cargando datos...</div>
+            <table id="tablaUsuarios" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre o Avatar</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <script>
+                // Función para cargar datos desde el archivo PHP
+                async function cargarUsuarios() {
+                    try {
+                        const response = await fetch('obtener_usuarios.php');
+                        const usuarios = await response.json();
+
+                        const tabla = document.getElementById('tablaUsuarios');
+                        const tbody = tabla.querySelector('tbody');
+                        const mensaje = document.getElementById('mensaje');
+
+                        if (usuarios.length > 0) {
+                            usuarios.forEach(usuario => {
+                                const fila = document.createElement('tr');
+                                fila.innerHTML = `
+                                    <td>${usuario.id}</td>
+                                    <td>${usuario.avatar_seleccionado}</td>
+                                    <td>${usuario.fecha_registro}</td>
+                                    <td>
+                                        <img src="images/editar.png" style="width: 20px;">
+                                    </td>
+                                `;
+                                tbody.appendChild(fila);
+                            });
+
+                            // Mostrar la tabla y ocultar el mensaje
+                            mensaje.style.display = 'none';
+                            tabla.style.display = 'table';
+                        } else {
+                            mensaje.textContent = 'No hay usuarios registrados.';
+                        }
+                    } catch (error) {
+                        console.error('Error al cargar usuarios:', error);
+                        document.getElementById('mensaje').textContent = 'Error al cargar los datos.';
+                    }
+                }
+
+                // Llamar a la función cuando la página cargue
+                window.onload = cargarUsuarios;
+            </script> -->
         </div>
 
         <div id="content-module2" class="module-content-box">
@@ -65,17 +117,186 @@
         </div>
 
         <div id="content-module3" class="module-content-box">
-            <h3>Contenido del Módulo 3</h3>
-            <p>Detalles de lo que ofrece el Módulo 3...</p>
+            <!-- <h1>Listado de Citas</h1>
+            <div id="mensaje">Cargando datos...</div>
+            <table id="tablaCitas" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre del paciente</th>
+                        <th>Nombre del profesional</th>
+                        <th>Fecha de la cita</th>
+                        <th>Hora de la cita</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <script>
+                // Función para cargar datos desde el archivo PHP
+                async function cargarCitas() {
+                    try {
+                        const response = await fetch('obtener_citas.php');
+                        const citas = await response.json();
+
+                        const tabla = document.getElementById('tablaCitas');
+                        const tbody = tabla.querySelector('tbody');
+                        const mensaje = document.getElementById('mensaje');
+
+                        if (citas.length > 0) {
+                            citas.forEach(cita => {
+                                const fila = document.createElement('tr');
+                                fila.innerHTML = `
+                                    <td>${cita.id}</td>
+                                    <td>${cita.nombre_paciente}</td>
+                                    <td>${cita.nombre_profesional}</td>
+                                    <td>${cita.fecha_cita}</td>
+                                    <td>${cita.hora_cita}</td>
+                                `;
+                                tbody.appendChild(fila);
+                            });
+
+                            // Mostrar la tabla y ocultar el mensaje
+                            mensaje.style.display = 'none';
+                            tabla.style.display = 'table';
+                        } else {
+                            mensaje.textContent = 'No hay citas registrados.';
+                        }
+                    } catch (error) {
+                        console.error('Error al cargar citas:', error);
+                        document.getElementById('mensaje').textContent = 'Error al cargar los datos.';
+                    }
+                }
+
+                // Llamar a la función cuando la página cargue
+                window.onload = cargarCitas;
+            </script>
+            <br>
+            <img src="images/agregar.png" style="width: 20px;"> -->
         </div>
 
         <div id="content-module4" class="module-content-box">
-            <h3>Contenido del Módulo 4</h3>
-            <p>Detalles de lo que ofrece el Módulo 4...</p>
+            <h1>Listado de Citas</h1>
+            <div id="mensaje">Cargando datos...</div>
+            <table id="tablaCitas" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre del paciente</th>
+                        <th>Nombre del profesional</th>
+                        <th>Fecha de la cita</th>
+                        <th>Hora de la cita</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <script>
+                // Función para cargar datos desde el archivo PHP
+                async function cargarCitas() {
+                    try {
+                        const response = await fetch('obtener_citas.php');
+                        const citas = await response.json();
+
+                        const tabla = document.getElementById('tablaCitas');
+                        const tbody = tabla.querySelector('tbody');
+                        const mensaje = document.getElementById('mensaje');
+
+                        if (citas.length > 0) {
+                            citas.forEach(cita => {
+                                const fila = document.createElement('tr');
+                                fila.innerHTML = `
+                                    <td>${cita.id}</td>
+                                    <td>${cita.nombre_paciente}</td>
+                                    <td>${cita.nombre_profesional}</td>
+                                    <td>${cita.fecha_cita}</td>
+                                    <td>${cita.hora_cita}</td>
+                                    <td>
+                                        <img src="images/cancelar.png" style="width: 20px;">
+                                    </td>
+                                `;
+                                tbody.appendChild(fila);
+                            });
+
+                            // Mostrar la tabla y ocultar el mensaje
+                            mensaje.style.display = 'none';
+                            tabla.style.display = 'table';
+                        } else {
+                            mensaje.textContent = 'No hay citas registrados.';
+                        }
+                    } catch (error) {
+                        console.error('Error al cargar citas:', error);
+                        document.getElementById('mensaje').textContent = 'Error al cargar los datos.';
+                    }
+                }
+
+                // Llamar a la función cuando la página cargue
+                window.onload = cargarCitas;
+            </script>
         </div>
 
         <div id="content-module5" class="module-content-box">
             <h3>Contenido del Módulo 5</h3>
+            <!-- <h1>Listado de Citas</h1>
+            <div id="mensaje">Cargando datos...</div>
+            <table id="tablaCitas" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre del paciente</th>
+                        <th>Nombre del profesional</th>
+                        <th>Fecha de la cita</th>
+                        <th>Hora de la cita</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <script>
+                // Función para cargar datos desde el archivo PHP
+                async function cargarCitas() {
+                    try {
+                        const response = await fetch('obtener_citas.php');
+                        const citas = await response.json();
+
+                        const tabla = document.getElementById('tablaCitas');
+                        const tbody = tabla.querySelector('tbody');
+                        const mensaje = document.getElementById('mensaje');
+
+                        if (citas.length > 0) {
+                            citas.forEach(cita => {
+                                const fila = document.createElement('tr');
+                                fila.innerHTML = `
+                                    <td>${cita.id}</td>
+                                    <td>${cita.nombre_paciente}</td>
+                                    <td>${cita.nombre_profesional}</td>
+                                    <td>${cita.fecha_cita}</td>
+                                    <td>${cita.hora_cita}</td>
+                                    <td>
+                                        <img src="images/editar.png" style="width: 20px;">
+                                    </td>
+                                `;
+                                tbody.appendChild(fila);
+                            });
+
+                            // Mostrar la tabla y ocultar el mensaje
+                            mensaje.style.display = 'none';
+                            tabla.style.display = 'table';
+                        } else {
+                            mensaje.textContent = 'No hay citas registrados.';
+                        }
+                    } catch (error) {
+                        console.error('Error al cargar citas:', error);
+                        document.getElementById('mensaje').textContent = 'Error al cargar los datos.';
+                    }
+                }
+
+                // Llamar a la función cuando la página cargue
+                window.onload = cargarCitas;
+            </script> -->
             <p>Detalles de lo que ofrece el Módulo 5...</p>
         </div>
 
